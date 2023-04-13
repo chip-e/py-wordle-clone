@@ -8,7 +8,7 @@ out_path = pathlib.Path(sys.argv[2])
 words = sorted(
     {
         word.lower()
-        for word in_path.read_text(encoding="utf-8").split()
+        for word in in_path.read_text(encoding="utf-8").split()
         if all(letter in ascii_letters for letter in word)
     },
     key=lambda word: (len(word), word),

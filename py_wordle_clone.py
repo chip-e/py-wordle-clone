@@ -2,16 +2,19 @@
 
 import pathlib #file path handling
 import random
+from string import ascii_letters
 
 WORDLIST = pathlib.Path("wordlist.txt")
 
 words = [
     word.upper()
-    for word in WORDLIST.read_text(encoding="utf-8").strip().split("\n")
+    for word in WORDLIST.read_text(encoding="utf-8").split("\n")
+    if len(word) == 5 and all(letter in ascii_letters for letter in word)
 ]
 word = random.choice(words)
 
 for guess_try in range(1,7):
+    print(word)
     guess = input(f"\nGuess {guess_try}: ").upper()
     if guess == word:
         print("Correct")
