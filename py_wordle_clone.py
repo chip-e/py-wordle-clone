@@ -3,6 +3,10 @@
 import pathlib #file path handling
 import random
 from string import ascii_letters
+from rich.console import Console
+from rich.theme import Theme
+
+console = Console(width=40, theme=Theme({"warning": "red on yellow"}))
 
 def main():
     # Pre-process
@@ -64,5 +68,10 @@ def show_guess(guess, word):
 def game_over(word):
     print(f"The word was {word}")
 
+def refresh_page(headline):
+    console.clear()
+    console.rule(f"[bold blue]:books: {headline} :books:[/]\n")
+
 if __name__ == "__main__":
     main()
+
